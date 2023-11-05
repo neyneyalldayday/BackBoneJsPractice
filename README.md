@@ -39,3 +39,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 This To-Do List application is a basic example of using Backbone.js to manage tasks. It serves as a starting point for more complex applications built on the Backbone.js framework.
 
 You can customize and expand this README as needed, adding more information, credits, or instructions based on your specific use case or project requirements.
+
+
+##screenshots
+![image](https://github.com/neyneyalldayday/BackBoneJsPractice/assets/65675240/8f87cb69-31bb-47cb-81b6-92fcdef75638)
+
+![image](https://github.com/neyneyalldayday/BackBoneJsPractice/assets/65675240/cdeb3d16-76e8-4e8c-b473-151ff95b67cb)
