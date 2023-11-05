@@ -1,0 +1,68 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.app-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  
+}
+
+.task-wrapper{
+  border-radius: 5px;
+  box-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+  width: 40%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: blanchedalmond;
+  height: fit-content;
+}
+
+.input-task{
+    border-radius: 3px;
+    border-style: hidden;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    padding: .3rem;
+    width: 50%;
+    text-align: center;
+}
+
+.input-task-list{
+    text-align: center;
+    padding: .3rem;
+}
+
+.btn{
+    border-style: hidden;
+    padding: .3rem;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.6);    
+}
+
+.btn:hover{
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0,0,0,1);
+}
+
+li{
+    list-style: circle;
+    padding: .2rem;
+
+}
+
+li:hover{
+    cursor: pointer;
+}
+
+
+/* Add this CSS to style completed tasks */
+.completed {
+    text-decoration: line-through;
+}
+
+
