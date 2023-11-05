@@ -45,16 +45,39 @@ var TaskListView = Backbone.View.extend({
 
     initialize: function () {
         this.collection = new TaskList();
+
+        var savedTasks = localStorage.getItem('tasks')
+        if (savedTasks) {
+            this.collection.add(JSON.parse(savedTasks));
+        }
+        this.renderTasks();
         this.listenTo(this.collection, 'add', this.renderTask);
         this.render();
-    },
+        },
 
     events: {
         'click #add-task': 'addTask',
-        'click li': 'toggleCompletion'
+        'click li': 'toggleCompletion',
+        'click #clear-list': 'clearList'
     },
- 
 
+    renderTasks: function(){
+        this.$el.find('#task-list').empty();
+        this.collection.each(this.renderTask, this);
+    },
+    
+
+    clearList: function(){
+
+        this.collection.reset();
+        this.saveTasksToLocalStorage();
+        this.$el.find('#task-list').empty();
+
+    },
+
+    saveTasksToLocalStorage: function () {
+        localStorage.setItem('tasks', JSON.stringify(this.collection.toJSON()))
+    },
 
     toggleCompletion: function (event) {
         console.log("hey")
@@ -65,7 +88,7 @@ var TaskListView = Backbone.View.extend({
 
         if(taskModel) {
             taskModel.set('completed', !taskModel.get('completed'))
-            console.log('toggleCompletion fired:', taskModel.get('completed'));
+            this.saveTasksToLocalStorage()
         }
     },
 
@@ -81,7 +104,7 @@ var TaskListView = Backbone.View.extend({
         var renderedTask = taskView.render().el
 
         renderedTask.setAttribute('data-cid', task.cid);
-        
+
         this.$el.find('#task-list').append(taskView.render().el);
     },
 
@@ -89,6 +112,7 @@ var TaskListView = Backbone.View.extend({
         var taskTitle = this.$el.find('#new-task').val();
         if (taskTitle) {
             this.collection.add(new Task({ title: taskTitle }));
+            this.saveTasksToLocalStorage();
             this.$el.find('#new-task').val('');
         }
     }
